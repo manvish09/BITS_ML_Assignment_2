@@ -1,16 +1,10 @@
 # Machine Learning Classification Model Comparison
 
-## Overview
+## 1. Problem Statement
 
-This project compares five classification algorithms on the Breast Cancer Wisconsin Diagnostic dataset. The objective is to evaluate how different classification approaches perform on the same binary classification problem using multiple evaluation metrics.
+The objective of this project is to implement and compare multiple machine learning classification models on the Breast Cancer Wisconsin Diagnostic dataset.
 
-The project also includes an interactive Streamlit application where a test CSV can be uploaded, a model can be selected, and the corresponding predictions and evaluation results can be viewed.
-
-## Problem Statement
-
-The objective is to build and compare multiple machine learning classification models for predicting the class of observations in the Breast Cancer Wisconsin Diagnostic dataset.
-
-The models are evaluated using:
+The models are evaluated using the following performance metrics:
 
 - Accuracy
 - AUC
@@ -19,9 +13,11 @@ The models are evaluated using:
 - F1 Score
 - Matthews Correlation Coefficient (MCC)
 
-The same dataset and train-test split are used across all models so that their performance can be compared consistently.
+The same train-test split is used for all models so that their performance can be compared under the same conditions.
 
-## Dataset
+An interactive Streamlit application is also provided to allow users to upload test data, select a model, generate predictions and view the corresponding evaluation results.
+
+## 2. Dataset Description
 
 The project uses the **Breast Cancer Wisconsin Diagnostic (WDBC)** dataset.
 
@@ -41,112 +37,77 @@ The dataset satisfies the assignment requirement of at least 500 instances and 1
 
 For model evaluation, the data is divided into training and test sets using an **80:20 stratified split** with `random_state=42`.
 
-Feature standardization is applied for the models where feature scale affects the learning process, particularly Logistic Regression and k-Nearest Neighbors.
+Feature standardization is applied to Logistic Regression and k-Nearest Neighbors, where feature scale can affect model performance.
 
-## Models
+**Dataset Source:**  
+[Add the verified UCI/Kaggle dataset source here.]
 
-Five classification models are implemented:
+## 3. GitHub Repository Link
 
-1. Logistic Regression
-2. Decision Tree Classifier
-3. k-Nearest Neighbors (kNN)
-4. Gaussian Naive Bayes
-5. Random Forest Classifier
+[View the complete project repository on GitHub](https://github.com/manvish09/ML_Assignment_2)
 
-Each model is trained on the same training dataset and evaluated on the same held-out test set.
+The repository contains the application code, dataset, trained models, model-training code, evaluation results, test data and required configuration files.
 
-## Model Performance
+## 4. Models Used
+
+The following five classification models are implemented and evaluated:
+
+1. **Logistic Regression**
+2. **Decision Tree Classifier**
+3. **k-Nearest Neighbors (kNN)**
+4. **Gaussian Naive Bayes**
+5. **Random Forest Classifier**
+
+All models are trained using the same training data and evaluated using the same held-out test data.
+
+The trained model files are stored in the `model/` directory.
+
+## 5. Comparison Table
 
 The following results were obtained on the held-out test set.
 
-| Model | Accuracy | AUC | Precision | Recall | F1 Score | MCC |
+| ML Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---:|---:|---:|---:|---:|---:|
 | Logistic Regression | 0.9825 | 0.9954 | 0.9861 | 0.9861 | 0.9861 | 0.9623 |
 | Decision Tree | 0.9211 | 0.9163 | 0.9565 | 0.9167 | 0.9362 | 0.8341 |
 | kNN | 0.9737 | 0.9884 | 0.9600 | 1.0000 | 0.9796 | 0.9442 |
-| Gaussian Naive Bayes | 0.9386 | 0.9878 | 0.9452 | 0.9583 | 0.9517 | 0.8676 |
+| Naive Bayes | 0.9386 | 0.9878 | 0.9452 | 0.9583 | 0.9517 | 0.8676 |
 | Random Forest | 0.9474 | 0.9937 | 0.9583 | 0.9583 | 0.9583 | 0.8869 |
 
-## Observations
+## 6. Observations
 
 ### Logistic Regression
 
-Logistic Regression produced the strongest overall results in this experiment. It achieved **98.25% accuracy**, an **AUC of 0.9954**, and an **MCC of 0.9623**. Its precision, recall and F1 score were also well balanced at 0.9861.
+Logistic Regression produced the strongest overall performance in this experiment. It achieved **98.25% accuracy**, an **AUC of 0.9954**, and an **MCC of 0.9623**. Its precision, recall and F1 score were also well balanced at 0.9861.
 
-The results show that a linear model performs very well on this dataset when the numerical features are standardized.
+The results indicate that the standardized numerical features work particularly well with a linear classification approach for this dataset.
 
 ### Decision Tree
 
 The Decision Tree achieved **92.11% accuracy**, which was the lowest accuracy among the five models. Its AUC was 0.9163 and MCC was 0.8341.
 
-Although a decision tree can model nonlinear relationships and is easy to interpret, the single tree used in this experiment did not perform as well as the other models on the selected test split.
+Although a decision tree can capture nonlinear relationships and is relatively easy to interpret, the single tree configuration used in this experiment performed below the other models on the selected test split.
 
-### k-Nearest Neighbors
+### kNN
 
-kNN achieved **97.37% accuracy** and an **F1 score of 0.9796**. Its recall was **1.0000**, meaning that every observation belonging to the positive class in the test set was correctly identified.
+kNN achieved **97.37% accuracy** and an **F1 score of 0.9796**. Its recall was **1.0000**, meaning that none of the actual positive-class observations in the test set were missed by the model.
 
-Its AUC of 0.9884 and MCC of 0.9442 also indicate strong classification performance. Standardization is particularly important for kNN because the model relies on distances between observations.
+The model also achieved an AUC of 0.9884 and MCC of 0.9442. Feature standardization is important for kNN because the model relies on distances between observations.
 
-### Gaussian Naive Bayes
+### Naive Bayes
 
-Naive Bayes achieved **93.86% accuracy** with an AUC of **0.9878**. The relatively high AUC indicates good class-separation capability, although its accuracy, F1 score and MCC were lower than those of Logistic Regression and kNN.
+Gaussian Naive Bayes achieved **93.86% accuracy** and an **AUC of 0.9878**. The high AUC indicates good class-separation capability, although its accuracy, F1 score and MCC were lower than those of Logistic Regression and kNN.
 
 ### Random Forest
 
-Random Forest achieved **94.74% accuracy** and an AUC of **0.9937**. Its high AUC indicates strong separation between the two classes.
+Random Forest achieved **94.74% accuracy** and an **AUC of 0.9937**. Its high AUC indicates strong class-separation capability.
 
-However, on this particular test split, its accuracy and MCC were lower than Logistic Regression and kNN.
+However, on this particular test split, its accuracy and MCC were lower than those of Logistic Regression and kNN.
 
-## Overall Result
+### Overall Winner
 
-Based on the complete set of evaluation metrics, **Logistic Regression was the strongest overall model for this experiment**.
+Based on the complete set of evaluation metrics, **Logistic Regression was the strongest overall model in this experiment**.
 
 It achieved the highest accuracy, precision, F1 score and MCC, while also recording an AUC of 0.9954.
 
-kNN was a close second, particularly because of its perfect recall on the test set.
-
-## Streamlit Application
-
-The project includes an interactive Streamlit application for evaluating the trained models.
-
-The application provides:
-
-- Test-data CSV upload
-- Model selection
-- Prediction results
-- Accuracy
-- AUC
-- Precision
-- Recall
-- F1 Score
-- MCC
-- Confusion matrix
-- Classification report
-- Model comparison results
-
-The application uses the saved trained models from the `model/` directory.
-
-## Project Structure
-
-```text
-ML_Assignment_2/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-├── test_data.csv
-│
-├── data/
-│   └── breast_cancer_dataset.csv
-│
-├── model/
-│   ├── train_models.py
-│   ├── logistic_regression.joblib
-│   ├── decision_tree.joblib
-│   ├── knn.joblib
-│   ├── naive_bayes.joblib
-│   ├── random_forest.joblib
-│   └── evaluation_results.csv
-│
-└── .streamlit/
-    └── config.toml
+kNN was a close second and achieved the highest recall of 1.0000.
