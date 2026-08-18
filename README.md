@@ -74,40 +74,13 @@ The following results were obtained on the held-out test set.
 | Naive Bayes | 0.9386 | 0.9878 | 0.9452 | 0.9583 | 0.9517 | 0.8676 |
 | Random Forest | 0.9474 | 0.9937 | 0.9583 | 0.9583 | 0.9583 | 0.8869 |
 
-## 6. Observations
+### Observations
 
-### Logistic Regression
-
-Logistic Regression produced the strongest overall performance in this experiment. It achieved **98.25% accuracy**, an **AUC of 0.9954**, and an **MCC of 0.9623**. Its precision, recall and F1 score were also well balanced at 0.9861.
-
-The results indicate that the standardized numerical features work particularly well with a linear classification approach for this dataset.
-
-### Decision Tree
-
-The Decision Tree achieved **92.11% accuracy**, which was the lowest accuracy among the five models. Its AUC was 0.9163 and MCC was 0.8341.
-
-Although a decision tree can capture nonlinear relationships and is relatively easy to interpret, the single tree configuration used in this experiment performed below the other models on the selected test split.
-
-### kNN
-
-kNN achieved **97.37% accuracy** and an **F1 score of 0.9796**. Its recall was **1.0000**, meaning that none of the actual positive-class observations in the test set were missed by the model.
-
-The model also achieved an AUC of 0.9884 and MCC of 0.9442. Feature standardization is important for kNN because the model relies on distances between observations.
-
-### Naive Bayes
-
-Gaussian Naive Bayes achieved **93.86% accuracy** and an **AUC of 0.9878**. The high AUC indicates good class-separation capability, although its accuracy, F1 score and MCC were lower than those of Logistic Regression and kNN.
-
-### Random Forest
-
-Random Forest achieved **94.74% accuracy** and an **AUC of 0.9937**. Its high AUC indicates strong class-separation capability.
-
-However, on this particular test split, its accuracy and MCC were lower than those of Logistic Regression and kNN.
-
-### Overall Winner
-
-Based on the complete set of evaluation metrics, **Logistic Regression was the strongest overall model in this experiment**.
-
-It achieved the highest accuracy, precision, F1 score and MCC, while also recording an AUC of 0.9954.
-
-kNN was a close second and achieved the highest recall of 1.0000.
+| ML Model | Observation about Model Performance |
+|---|---|
+| **Logistic Regression** | Achieved the **best overall performance**, with **98.25% accuracy**, **0.9954 AUC**, **0.9861 precision**, **0.9861 recall**, **0.9861 F1 score**, and **0.9623 MCC**. The balanced precision and recall indicate consistent classification performance on the test set. |
+| **Decision Tree** | Achieved **92.11% accuracy**, **0.9163 AUC**, and **0.8341 MCC**, making it the weakest model among the five on this test split. Although it can capture nonlinear relationships and is easy to interpret, its performance was lower than the other models in this experiment. |
+| **kNN** | Achieved **97.37% accuracy**, **0.9884 AUC**, **0.9600 precision**, **1.0000 recall**, **0.9796 F1 score**, and **0.9442 MCC**. Its **perfect recall** means that all positive-class observations in the test set were correctly identified. Standardization is important because kNN relies on distances between observations. |
+| **Naive Bayes** | Achieved **93.86% accuracy**, **0.9878 AUC**, **0.9452 precision**, **0.9583 recall**, **0.9517 F1 score**, and **0.8676 MCC**. Its relatively high AUC indicates good class-separation ability, although its overall performance was below Logistic Regression and kNN. |
+| **Random Forest** | Achieved **94.74% accuracy**, **0.9937 AUC**, **0.9583 precision**, **0.9583 recall**, **0.9583 F1 score**, and **0.8869 MCC**. Its very high AUC indicates strong class separation, but it did not achieve the same overall performance as Logistic Regression or kNN on this test split. |
+| **Overall Winner** | **Logistic Regression** is the strongest overall model in this experiment. It achieved the highest **accuracy, precision, F1 score, MCC, and AUC**, while maintaining balanced precision and recall. **kNN** was the closest competitor, particularly because of its perfect recall. |
