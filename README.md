@@ -44,7 +44,7 @@ Feature standardization is applied to Logistic Regression and k-Nearest Neighbor
 
 ## 3. GitHub Repository Link
 
-[View the complete project repository on GitHub](https://github.com/manvish09/ML_Assignment_2)
+https://github.com/manvish09/BITS_ML_Assignment_2
 
 The repository contains the application code, dataset, trained models, model-training code, evaluation results, test data and required configuration files.
 
